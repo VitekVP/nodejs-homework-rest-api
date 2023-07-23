@@ -9,8 +9,3 @@ const isEmptyBody = (req, res, next) => {
 };
 
 export default isEmptyBody;
-
-// const { name, email, phone } = req.body;
-// if (!name && !email && !phone) {
-// 	next(HttpError(400, "missing fields"));
-// }
