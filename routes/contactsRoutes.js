@@ -1,11 +1,13 @@
 import express from "express";
 
-import { contactsControllers } from "../../controllers/index.js";
-import { validateBody } from "../../decorators/index.js";
-import contactsSchema from "../../schemas/contactSchema.js";
-import { isEmptyBody, isValidId, isEmptyFavorite } from "../../middlewares/index.js";
+import { contactsControllers } from "../controllers/index.js";
+import { validateBody } from "../decorators/index.js";
+import contactsSchema from "../schemas/contactSchema.js";
+import { isEmptyBody, isValidId, isEmptyFavorite, authenticate } from "../middlewares/index.js";
 
 const router = express.Router();
+
+router.use(authenticate);
 
 router.get("/", contactsControllers.listContacts);
 
