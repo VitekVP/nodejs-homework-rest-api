@@ -3,7 +3,7 @@ import express from "express";
 import { validateBody } from "../decorators/index.js";
 import userSchema from "../schemas/userSchema.js";
 import authControllers from "../controllers/authControllers.js";
-import { authenticate } from "../middlewares/index.js";
+import { authenticate, uploadFile } from "../middlewares/index.js";
 
 const router = express.Router();
 
@@ -21,5 +21,7 @@ router.patch(
 	validateBody(userSchema.userUpdateSubscriptionSchema),
 	authControllers.updateSubscription,
 );
+
+router.patch("/avatars", authenticate, uploadFile.single("avatar"), authControllers.updateAvatar);
 
 export default router;
