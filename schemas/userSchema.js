@@ -20,8 +20,13 @@ const userUpdateSubscriptionSchema = Joi.object({
 		.messages({ "any.required": "missing required subscription field" }),
 });
 
+const userEmailSchema = Joi.object({
+	email: Joi.string().pattern(emailRegexp).required().messages({ "any.required": "missing required field email" }),
+});
+
 export default {
 	userSingupSchema,
+	userEmailSchema,
 	userSinginSchema,
 	userUpdateSubscriptionSchema,
 };
